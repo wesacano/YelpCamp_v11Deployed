@@ -12,11 +12,13 @@ var express = require("express"),
     seedDB = require("./seeds"),
     commentRoutes = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
-    indexRoutes = require("./routes/index");
+    indexRoutes = require("./routes/index"),
+    mongoAtlasUsername = process.env.DBUSERNAME,
+    mongoAtlasPassword = process.env.DBPASSWORD;
 
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect("mongodb+srv://yelpCampDBUser:ybSLwLoYJ5HOOyEI@cluster0-eovw2.mongodb.net/test?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://"+mongoAtlasUsername+":"+mongoAtlasPassword+"@cluster0-eovw2.mongodb.net/test?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useCreateIndex: true
 }).then(() => {
