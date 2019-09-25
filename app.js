@@ -14,6 +14,8 @@ var express = require("express"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes = require("./routes/index");
 
+const PORT = process.env.PORT || 5000
+
 mongoose.connect("mongodb://localhost:27017/yelp_camp_v12", {useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine","ejs");
@@ -46,6 +48,4 @@ app.use(indexRoutes);
 app.use("/campgrounds/", campgroundRoutes);
 app.use("/campgrounds/:id/comments/", commentRoutes);
 
-app.listen(3000, function() {
-    console.log("YelpCamp has started")
-})
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
