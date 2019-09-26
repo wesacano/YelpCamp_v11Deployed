@@ -13,12 +13,11 @@ var express = require("express"),
     commentRoutes = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes = require("./routes/index"),
-    mongoAtlasUsername = process.env.DBUSERNAME,
-    mongoAtlasPassword = process.env.DBPASSWORD;
+    mongoDBURL = process.env.DBURL;
 
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect("mongodb+srv://"+mongoAtlasUsername+":"+mongoAtlasPassword+"@cluster0-eovw2.mongodb.net/test?retryWrites=true&w=majority", {
+mongoose.connect(mongoDBURL, {
     useNewUrlParser: true,
     useCreateIndex: true
 }).then(() => {
